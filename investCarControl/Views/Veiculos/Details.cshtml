@@ -1,0 +1,102 @@
+﻿@model InvestCarControl.Models.Veiculo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Veiculo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Placa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Placa)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Chassis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Chassis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dut)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dut)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Hodometro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Hodometro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AnoFab)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnoFab)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AnoModelo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnoModelo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Origem)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Origem)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Renavam)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Renavam)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorFipe)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorFipe)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorPago)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorPago)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorVenda)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorVenda)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Despesa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Despesa.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModeloCar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ModeloCar.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

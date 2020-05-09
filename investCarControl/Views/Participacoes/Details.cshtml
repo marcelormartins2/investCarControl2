@@ -1,0 +1,42 @@
+﻿@model InvestCarControl.Models.Participacao
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Participacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PorcentagemCompra)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PorcentagemCompra)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PorcentagemLucro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PorcentagemLucro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Parceiro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Parceiro.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Veiculo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Veiculo.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

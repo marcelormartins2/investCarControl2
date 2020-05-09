@@ -1,0 +1,47 @@
+﻿@model IEnumerable<InvestCarControl.Models.Responsavel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Despesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parceiro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Despesa.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parceiro.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id1="@item.DespesaId" asp-route-id2="@item.ParceiroId">Edit</a> |
+                <a asp-action="Details" asp-route-id1="@item.DespesaId" asp-route-id2="@item.ParceiroId">Details</a> |
+                <a asp-action="Delete" asp-route-id1="@item.DespesaId" asp-route-id2="@item.ParceiroId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

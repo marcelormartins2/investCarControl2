@@ -1,0 +1,18 @@
+﻿@model InvestCarControl.Models.Responsavel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Responsavel</h4>
+    <hr />
+    
+    <partial name="_delete_details" />
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

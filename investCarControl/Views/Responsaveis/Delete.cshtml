@@ -1,0 +1,22 @@
+﻿@model InvestCarControl.Models.Responsavel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Responsavel</h4>
+    <hr />
+    
+    <partial name="_delete_datails" />
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="DespesaId" />
+        <input type="hidden" asp-for="ParceiroId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

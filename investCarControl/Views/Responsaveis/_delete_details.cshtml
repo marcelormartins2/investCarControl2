@@ -1,0 +1,22 @@
+﻿@model InvestCarControl.Models.Responsavel
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Despesa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Despesa.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Parceiro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Parceiro.Id)
+        </dd>
+    </dl>

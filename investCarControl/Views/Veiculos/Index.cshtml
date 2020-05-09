@@ -1,0 +1,113 @@
+﻿@model IEnumerable<InvestCarControl.Models.Veiculo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Placa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chassis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hodometro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnoFab)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnoModelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Origem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Renavam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorFipe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorVenda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Despesa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModeloCar)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Placa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chassis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hodometro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnoFab)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnoModelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Origem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Renavam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorFipe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorVenda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Despesa.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModeloCar.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,15 @@
+﻿@model InvestCarControl.Models.Responsavel
+
+<div class="form-group">
+    <label asp-for="DespesaId" class="control-label"></label>
+    <select asp-for="DespesaId" class="form-control" asp-items="ViewBag.DespesaId"></select>
+</div>
+<div class="form-group">
+    <label asp-for="ParceiroId" class="control-label"></label>
+    <select asp-for="ParceiroId" class="form-control" asp-items="ViewBag.ParceiroId"></select>
+</div>
+<div class="form-group">
+    <label asp-for="Valor" class="control-label"></label>
+    <input asp-for="Valor" class="form-control" />
+    <span asp-validation-for="Valor" class="text-danger"></span>
+</div>

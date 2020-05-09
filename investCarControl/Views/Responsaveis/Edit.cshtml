@@ -1,0 +1,37 @@
+﻿@model InvestCarControl.Models.Responsavel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@{  int DespAntId = Model.DespesaId;
+    int ParcAntId = Model.ParceiroId;
+}
+<h2>Edit</h2>
+
+<h4>Responsavel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <partial name="_edit_create" />
+
+            <div class="form-group">
+                <input type="hidden" id="DespAntId" name="DespAntId" value="@DespAntId" />
+                <input type="hidden" id="ParcAntId" name="ParcAntId" value="@ParcAntId" />
+                <input type="submit" value="Save" class="btn btn-default" />
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
