@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Shared\Component\Cabecalho\Default.cshtml" />
     <None Include="Views\Shared\PartialViews\_estado_paciente.cshtml" />
     <None Include="Views\Shared\PartialViews\_footer.cshtml" />
     <None Include="Views\Shared\PartialViews\_head.cshtml" />

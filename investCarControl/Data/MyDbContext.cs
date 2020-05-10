@@ -1,7 +1,5 @@
-﻿using System;
+﻿using InvestCarControl.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using InvestCarControl.Models;
 
 namespace InvestCarControl.Data
 {

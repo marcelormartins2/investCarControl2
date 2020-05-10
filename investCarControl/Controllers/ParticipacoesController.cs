@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using InvestCarControl.Data;
+using InvestCarControl.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using InvestCarControl.Data;
-using InvestCarControl.Models;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace InvestCarControl.Controllers
 {

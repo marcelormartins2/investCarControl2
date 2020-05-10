@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using InvestCarControl.Models;
 using Microsoft.AspNetCore.Mvc;
-using InvestCarControl.Models;
+using System.Diagnostics;
 
 namespace InvestCarControl.Controllers
 {

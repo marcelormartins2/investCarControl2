@@ -1,4 +1,10 @@
-﻿<!doctype html>
+﻿
+@await Html.PartialAsync("PartialViews/_layout_original")
+
+@* ACIMA O _LAYOUT.CSHTML ORIGINAL *@
+
+
+<!doctype html>
 
 <html class="no-js">
 
@@ -7,6 +13,8 @@
 <body>
 
     @await Html.PartialAsync("PartialViews/_navbar")
+
+
     <!-- #wrapper -->
     <div id="wrapper">
         <!-- .page-sidebar -->
@@ -47,6 +55,8 @@
         <div class="page-content sidebar-page right-sidebar-page clearfix">
             <div class="page-content-wrapper">
                 <div class="page-content-inner">
+
+                    @await Html.PartialAsync("PartialViews/_sub_navbar")
 
                     @RenderBody()
 
