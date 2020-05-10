@@ -12,7 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using InvestCarControl.Data;
-
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace InvestCarControl
 {
@@ -37,9 +40,19 @@ namespace InvestCarControl
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
             services.AddDbContext<MyDbContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("MyDbContext"), builder =>
-                        builder.MigrationsAssembly("InvestCarControl")));
+                options.UseMySql(Configuration.GetConnectionString("MyDbContext"), builder =>
+                    builder.MigrationsAssembly("InvestCarControl")));
+        
+            services.AddDbContext<IdentyDbContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("MyDbContext"), builder =>
+                    builder.MigrationsAssembly("InvestCarControl")));
+
+            services.AddDefaultIdentity<IdentityUser>()
+                    //.AddDefaultUI(UIFramework.Bootstrap4)
+                    .AddEntityFrameworkStores<IdentyDbContext>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +71,8 @@ namespace InvestCarControl
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

@@ -1,9 +1,11 @@
 ﻿using InvestCarControl.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace InvestCarControl.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public IActionResult Index()

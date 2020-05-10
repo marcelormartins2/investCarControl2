@@ -1,5 +1,6 @@
 ﻿using InvestCarControl.Data;
 using InvestCarControl.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace InvestCarControl.Controllers
 {
+    [Authorize]
     public class FabricantesController : Controller
     {
         private readonly MyDbContext _context;
