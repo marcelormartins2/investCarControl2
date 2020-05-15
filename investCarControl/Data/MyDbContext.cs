@@ -85,9 +85,9 @@ namespace InvestCarControl.Data
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Email)
-                    .HasColumnName("email")
-                    .HasColumnType("varchar(45)");
+                entity.Property(e => e.UserName)
+                    .HasColumnName("UserName")
+                    .HasColumnType("varchar(255)");
 
                 entity.Property(e => e.Endereço)
                     .HasColumnName("endereço")

@@ -14,14 +14,15 @@ namespace InvestCarControl.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("InvestCarControl.Models.Despesa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("id");
+                        .HasColumnName("id")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Data")
                         .HasColumnName("data")
@@ -32,7 +33,8 @@ namespace InvestCarControl.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.Property<double>("Valor")
-                        .HasColumnName("valor");
+                        .HasColumnName("valor")
+                        .HasColumnType("double");
 
                     b.HasKey("Id");
 
@@ -43,14 +45,16 @@ namespace InvestCarControl.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("id");
+                        .HasColumnName("id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .HasColumnName("nome")
                         .HasColumnType("varchar(20)");
 
                     b.Property<int?>("Prioridade")
-                        .HasColumnName("prioridade");
+                        .HasColumnName("prioridade")
+                        .HasColumnType("int");
 
                     b.Property<string>("Site")
                         .HasColumnName("site")
@@ -65,10 +69,12 @@ namespace InvestCarControl.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("id");
+                        .HasColumnName("id")
+                        .HasColumnType("int");
 
                     b.Property<int>("FabricanteId")
-                        .HasColumnName("fabricante_id");
+                        .HasColumnName("fabricante_id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .HasColumnName("nome")
@@ -86,11 +92,8 @@ namespace InvestCarControl.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("id");
-
-                    b.Property<string>("Email")
-                        .HasColumnName("email")
-                        .HasColumnType("varchar(45)");
+                        .HasColumnName("id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Endereço")
                         .HasColumnName("endereço")
@@ -104,6 +107,10 @@ namespace InvestCarControl.Migrations
                         .HasColumnName("telefone")
                         .HasColumnType("varchar(45)");
 
+                    b.Property<string>("UserName")
+                        .HasColumnName("UserName")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("Id");
 
                     b.ToTable("parceiro");
@@ -112,16 +119,20 @@ namespace InvestCarControl.Migrations
             modelBuilder.Entity("InvestCarControl.Models.Participacao", b =>
                 {
                     b.Property<int>("ParceiroId")
-                        .HasColumnName("parceiro_id");
+                        .HasColumnName("parceiro_id")
+                        .HasColumnType("int");
 
                     b.Property<int>("VeiculoId")
-                        .HasColumnName("veiculo_id");
+                        .HasColumnName("veiculo_id")
+                        .HasColumnType("int");
 
                     b.Property<double>("PorcentagemCompra")
-                        .HasColumnName("porcentagemCompra");
+                        .HasColumnName("porcentagemCompra")
+                        .HasColumnType("double");
 
                     b.Property<double>("PorcentagemLucro")
-                        .HasColumnName("porcentagemLucro");
+                        .HasColumnName("porcentagemLucro")
+                        .HasColumnType("double");
 
                     b.HasKey("ParceiroId", "VeiculoId");
 
@@ -137,13 +148,16 @@ namespace InvestCarControl.Migrations
             modelBuilder.Entity("InvestCarControl.Models.Responsavel", b =>
                 {
                     b.Property<int>("DespesaId")
-                        .HasColumnName("despesa_id");
+                        .HasColumnName("despesa_id")
+                        .HasColumnType("int");
 
                     b.Property<int>("ParceiroId")
-                        .HasColumnName("parceiro_id");
+                        .HasColumnName("parceiro_id")
+                        .HasColumnType("int");
 
                     b.Property<double>("Valor")
-                        .HasColumnName("valor");
+                        .HasColumnName("valor")
+                        .HasColumnType("double");
 
                     b.HasKey("DespesaId", "ParceiroId");
 
@@ -160,13 +174,16 @@ namespace InvestCarControl.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("id");
+                        .HasColumnName("id")
+                        .HasColumnType("int");
 
                     b.Property<int>("AnoFab")
-                        .HasColumnName("anofab");
+                        .HasColumnName("anofab")
+                        .HasColumnType("int");
 
                     b.Property<int>("AnoModelo")
-                        .HasColumnName("anoModelo");
+                        .HasColumnName("anoModelo")
+                        .HasColumnType("int");
 
                     b.Property<string>("Chassis")
                         .HasColumnName("chassis")
@@ -177,17 +194,20 @@ namespace InvestCarControl.Migrations
                         .HasColumnType("varchar(15)");
 
                     b.Property<int?>("DespesaId")
-                        .HasColumnName("despesa_id");
+                        .HasColumnName("despesa_id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Dut")
                         .HasColumnName("dut")
                         .HasColumnType("varchar(20)");
 
                     b.Property<int?>("Hodometro")
-                        .HasColumnName("hodometro");
+                        .HasColumnName("hodometro")
+                        .HasColumnType("int");
 
                     b.Property<int>("ModeloCarId")
-                        .HasColumnName("modeloCar_id");
+                        .HasColumnName("modeloCar_id")
+                        .HasColumnType("int");
 
                     b.Property<string>("Origem")
                         .HasColumnName("origem")
@@ -198,16 +218,20 @@ namespace InvestCarControl.Migrations
                         .HasColumnType("varchar(10)");
 
                     b.Property<int?>("Renavam")
-                        .HasColumnName("renavam");
+                        .HasColumnName("renavam")
+                        .HasColumnType("int");
 
                     b.Property<double?>("ValorFipe")
-                        .HasColumnName("valorfipe");
+                        .HasColumnName("valorfipe")
+                        .HasColumnType("double");
 
                     b.Property<double?>("ValorPago")
-                        .HasColumnName("valorpago");
+                        .HasColumnName("valorpago")
+                        .HasColumnType("double");
 
                     b.Property<double?>("ValorVenda")
-                        .HasColumnName("valorvenda");
+                        .HasColumnName("valorvenda")
+                        .HasColumnType("double");
 
                     b.HasKey("Id");
 
@@ -225,7 +249,8 @@ namespace InvestCarControl.Migrations
                     b.HasOne("InvestCarControl.Models.Fabricante", "Fabricante")
                         .WithMany("Modelocar")
                         .HasForeignKey("FabricanteId")
-                        .HasConstraintName("fk_modeloCar_fabricante1");
+                        .HasConstraintName("fk_modeloCar_fabricante1")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("InvestCarControl.Models.Participacao", b =>
@@ -233,12 +258,14 @@ namespace InvestCarControl.Migrations
                     b.HasOne("InvestCarControl.Models.Parceiro", "Parceiro")
                         .WithMany("Participacao")
                         .HasForeignKey("ParceiroId")
-                        .HasConstraintName("fk_parceiro_has_veiculo_parceiro");
+                        .HasConstraintName("fk_parceiro_has_veiculo_parceiro")
+                        .IsRequired();
 
                     b.HasOne("InvestCarControl.Models.Veiculo", "Veiculo")
                         .WithMany("Participacao")
                         .HasForeignKey("VeiculoId")
-                        .HasConstraintName("fk_parceiro_has_veiculo_veiculo1");
+                        .HasConstraintName("fk_parceiro_has_veiculo_veiculo1")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("InvestCarControl.Models.Responsavel", b =>
@@ -246,12 +273,14 @@ namespace InvestCarControl.Migrations
                     b.HasOne("InvestCarControl.Models.Despesa", "Despesa")
                         .WithMany("Responsavel")
                         .HasForeignKey("DespesaId")
-                        .HasConstraintName("fk_despesa_has_parceiro_despesa1");
+                        .HasConstraintName("fk_despesa_has_parceiro_despesa1")
+                        .IsRequired();
 
                     b.HasOne("InvestCarControl.Models.Parceiro", "Parceiro")
                         .WithMany("Responsavel")
                         .HasForeignKey("ParceiroId")
-                        .HasConstraintName("fk_despesa_has_parceiro_parceiro1");
+                        .HasConstraintName("fk_despesa_has_parceiro_parceiro1")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("InvestCarControl.Models.Veiculo", b =>
@@ -264,7 +293,8 @@ namespace InvestCarControl.Migrations
                     b.HasOne("InvestCarControl.Models.Modelocar", "ModeloCar")
                         .WithMany("Veiculo")
                         .HasForeignKey("ModeloCarId")
-                        .HasConstraintName("fk_veiculo_modeloCar1");
+                        .HasConstraintName("fk_veiculo_modeloCar1")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Cooperchip.ITDeveloper.Mvc.Areas.Identity.Pages.Account.Manage
+namespace InvestCarControl.Areas.Identity.Pages.Account.Manage
 {
     public class SetPasswordModel : PageModel
     {

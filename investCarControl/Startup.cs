@@ -1,21 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using InvestCarControl.Models;
+﻿using InvestCarControl.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using InvestCarControl.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 
 namespace InvestCarControl
 {
@@ -39,7 +30,7 @@ namespace InvestCarControl
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddDbContext<MyDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("MyDbContext"), builder =>
@@ -72,14 +63,34 @@ namespace InvestCarControl
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-            app.UseAuthentication();
+            app.UseRouting();
 
-            app.UseMvc(routes =>
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                //routes.MapRoute("modulos","Prontuario/{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute("pacientes","{controller=Home}/{action=Index}/{id}/{paciente}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapRazorPages();
+
             });
+
+            //app.UseMvc(routes =>
+            //{
+            //    //routes.MapRoute("modulos","Prontuario/{controller=Home}/{action=Index}/{id?}");
+            //    //routes.MapRoute("pacientes","{controller=Home}/{action=Index}/{id}/{paciente}");
+
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller=Home}/{action=Index}/{id?}");
+            //});
         }
     }
 }

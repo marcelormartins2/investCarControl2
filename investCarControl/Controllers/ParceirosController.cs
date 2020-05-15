@@ -2,6 +2,7 @@
 using InvestCarControl.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,6 +22,12 @@ namespace InvestCarControl.Controllers
         {
             return View(await _context.Parceiro.ToListAsync());
         }
+
+        public async Task<IActionResult> Avatar() 
+        {
+            return View();
+        }
+
 
         // GET: Parceiros/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -51,10 +58,14 @@ namespace InvestCarControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Telefone,Endereço")] Parceiro parceiro)
+        //public async Task<IActionResult> Create([Bind("Id,Nome,Email,Telefone,Endereço")] Parceiro parceiro)
+        public async Task<IActionResult> Create(Parceiro parceiro)
         {
             if (ModelState.IsValid)
+
             {
+                // parceiro = parceiro.UserId = Guid.Parse("40b72079-0bd7-4fef-97aa-add4289f23aa");
+                parceiro.UserName = User.Identity.Name;
                 _context.Add(parceiro);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Cooperchip.ITDeveloper.Mvc.Areas.Identity.Pages.Account
+namespace InvestCarControl.Areas.Identity.Pages.Account
 {
     public class AccessDeniedModel : PageModel
     {

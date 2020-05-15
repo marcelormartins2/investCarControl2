@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>@ViewData["Title"] - EAD - ITDeveloper</title>
+    <title>@ViewData["Title"] - InvestCar</title>
     <!-- Mobile specific metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=no">
     <!-- Force IE9 to render in normal mode -->
@@ -45,17 +45,27 @@
 <div class="container login-container">
     <div class="login-panel panel panel-default plain animated bounceIn">
         <!-- Start .panel -->
-        <div class="panel-heading">
+        @*<div class="panel-heading">
             <h4 class="panel-title text-center">
-                <img id="logo" src="~/img/logo-dark.png" alt="EAD ITDeveloper">
+                <img id="logo" src="~/img/logo-dark.png" alt="Invest Car">
             </h4>
-        </div>
+        </div>*@
         <div class="panel-body">
 
 
             <form asp-route-returnUrl="@Model.ReturnUrl" id="register-form" class="form-horizontal mt0" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
 
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <div class="input-group input-icon">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input asp-for="Input.UserName" class="form-control" placeholder="Criar um Nome de Usuário" />
+                            <span asp-validation-for="Input.UserName" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-lg-12">
                         <div class="input-group input-icon">
@@ -89,19 +99,19 @@
                 </div>
             </form>
 
-            <div class="seperator">
+            @*<div class="seperator">
                 <strong>ou</strong>
                 <hr>
             </div>
             <div class="social-buttons text-center mt5 mb5">
                 <a href="#" class="btn btn-primary btn-alt mr10">Entrar com <i class="fa fa-facebook s20 ml5 mr0"></i></a>
                 <a href="#" class="btn btn-danger btn-alt ml10">Entrar com <i class="fa fa-google-plus s20 ml5 mr0"></i></a>
-            </div>
+            </div>*@
             <div class="seperator">
                 <strong>ou</strong>
                 <hr>
             </div>
-            <div class="panel-footer gray-lighter-bg bt">
+                <div class="panel-footer gray-lighter-bg bt">
                 <h4 class="text-center">
                     <strong>Se já possui uma conta:</strong>
                 </h4>
@@ -122,7 +132,7 @@
 
 <div class="container">
     <div class="footer">
-        <p class="text-center">&copy; 2007 / @DateTime.Now.Year - Cooperchip. Todos os direitos reservados!</p>
+        <p class="text-center">&copy; 2007 / @DateTime.Now.Year - InvestCar. Todos os direitos reservados!</p>
     </div>
 </div>
 <!-- Javascripts -->

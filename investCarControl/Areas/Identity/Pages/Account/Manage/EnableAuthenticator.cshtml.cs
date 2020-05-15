@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace Cooperchip.ITDeveloper.Mvc.Areas.Identity.Pages.Account.Manage
+namespace InvestCarControl.Areas.Identity.Pages.Account.Manage
 {
     public class EnableAuthenticatorModel : PageModel
     {
@@ -148,7 +148,7 @@ namespace Cooperchip.ITDeveloper.Mvc.Areas.Identity.Pages.Account.Manage
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("Cooperchip.ITDeveloper.Mvc"),
+                _urlEncoder.Encode("InvestCarControl"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }
