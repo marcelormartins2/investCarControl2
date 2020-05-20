@@ -1,19 +1,21 @@
 ﻿@model IEnumerable<InvestCarControl.Models.Parceiro>
 
+
 @{
     ViewData["Title"] = "Parceiros";
 }
 
 @await Html.PartialAsync("_parceirosInicio")
 
-    <div class="col-md-4">
-        <div class="profile-avatar">
-            <img src="~/img/avatars/default2.png" alt="Avatar" height="128" width="128">
-            <p class="mt10">
-                <a asp-area="" asp-controller="Parceiros" asp-action="Avatar"><i class="fa fa-picture-o"></i> Editar</a>
-            </p>
-        </div>
+<div class="col-md-4">
+    <div class="profile-avatar">
+        <p>@ViewBag.NomeUsuario</p>
+        <img src=@ViewBag.PathAvatar alt="Avatar" height="128" width="128">
+        <p class="mt10">
+            <a asp-area="" asp-controller="Parceiros" asp-action="Avatar"><i class="fa fa-picture-o"></i> Editar</a>
+        </p>
     </div>
+</div>
 
 
 @await Html.PartialAsync("_parceirosFim")

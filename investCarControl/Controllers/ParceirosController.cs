@@ -1,14 +1,11 @@
 ﻿using InvestCarControl.Data;
 using InvestCarControl.Models;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace InvestCarControl.Controllers
@@ -27,6 +24,17 @@ namespace InvestCarControl.Controllers
         // GET: Parceiros
         public async Task<IActionResult> Index()
         {
+            var path = Path.Combine(
+                                 Directory.GetCurrentDirectory(), "wwwroot/img/avatars", this.User.Identity.Name + ".jpg");
+            if (System.IO.File.Exists(path))
+            {
+                ViewData["PathAvatar"] = "/img/avatars/"+User.Identity.Name +".jpg";
+            }
+            else
+            {
+                ViewData["PathAvatar"] = "/img/avatars/default2.png";
+            }
+            ViewData["NomeUsuario"] = User.Identity.Name;
             return View(await _context.Parceiro.ToListAsync());
         }
 
@@ -35,6 +43,21 @@ namespace InvestCarControl.Controllers
             return View();
         }
 
+        public Task<IActionResult> SaveImage(string base64image)
+        {
+            if (base64image != null)
+            {
+                byte[] bytes = Convert.FromBase64String(base64image.Substring(23));
+                var path = Path.Combine(
+                                 Directory.GetCurrentDirectory(), "wwwroot/img/avatars", this.User.Identity.Name + ".jpg");
+                using (var imageFile = new FileStream(path, FileMode.Create))
+                {
+                    imageFile.Write(bytes, 0, bytes.Length);
+                    imageFile.Flush();
+                }
+            }
+            return null;
+        }
 
         // GET: Parceiros/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -60,21 +83,7 @@ namespace InvestCarControl.Controllers
             return View();
         }
 
-        public async Task<IActionResult> SaveImage(string base64image)
-        {
-            if (base64image != null)
-            {
-                byte[] bytes = Convert.FromBase64String(base64image.Substring(23));
-                var path = Path.Combine(
-                                 Directory.GetCurrentDirectory(), "wwwroot/img/avatars", this.User.Identity.Name + ".jpg");
-                using (var imageFile = new FileStream(path, FileMode.Create))
-                {
-                    imageFile.Write(bytes, 0, bytes.Length);
-                    imageFile.Flush();
-                }
-            }
-            return View(await _context.Parceiro.ToListAsync());
-        }
+        
 
         // POST: Parceiros/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
