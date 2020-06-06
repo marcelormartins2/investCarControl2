@@ -10,9 +10,9 @@ namespace InvestCarControl.Controllers
 {
     public class ModelocarsController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IdentyDbContext _context;
 
-        public ModelocarsController(MyDbContext context)
+        public ModelocarsController(IdentyDbContext context)
         {
             _context = context;
         }

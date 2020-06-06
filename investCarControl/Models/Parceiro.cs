@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 
 
 namespace InvestCarControl.Models
 {
-    public partial class Parceiro
+    public partial class Parceiro : IdentityUser
     {
         public Parceiro()
         {
@@ -13,8 +14,6 @@ namespace InvestCarControl.Models
             Responsavel = new HashSet<Responsavel>();
         }
 
-        public int Id { get; set; }
-        public string UserName { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public string Endereço { get; set; }

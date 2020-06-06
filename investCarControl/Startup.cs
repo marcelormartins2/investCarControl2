@@ -1,4 +1,5 @@
 ﻿using InvestCarControl.Data;
+using InvestCarControl.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,15 +38,15 @@ namespace InvestCarControl
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddDbContext<MyDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("MyDbContext"), builder =>
-                    builder.MigrationsAssembly("InvestCarControl")));
+            //services.AddDbContext<MyDbContext>(options =>
+            //    options.UseMySql(Configuration.GetConnectionString("MyDbContext"), builder =>
+            //        builder.MigrationsAssembly("InvestCarControl")));
         
             services.AddDbContext<IdentyDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("MyDbContext"), builder =>
                     builder.MigrationsAssembly("InvestCarControl")));
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<Parceiro>()
                     //.AddDefaultUI(UIFramework.Bootstrap4)
                     .AddEntityFrameworkStores<IdentyDbContext>();
 

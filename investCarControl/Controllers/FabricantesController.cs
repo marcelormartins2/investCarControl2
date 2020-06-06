@@ -11,9 +11,9 @@ namespace InvestCarControl.Controllers
     [Authorize]
     public class FabricantesController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IdentyDbContext _context;
 
-        public FabricantesController(MyDbContext context)
+        public FabricantesController(IdentyDbContext context)
         {
             _context = context;
         }

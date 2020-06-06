@@ -1,22 +1,36 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using InvestCarControl.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace InvestCarControl.Data
 {
-    public class IdentyDbContext : IdentityDbContext<IdentityUser>
+    public class IdentyDbContext : IdentityDbContext<Parceiro>
     {
         public IdentyDbContext(DbContextOptions<IdentyDbContext> options)
             : base(options)
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        public virtual DbSet<Despesa> Despesa { get; set; }
+        public virtual DbSet<Fabricante> Fabricante { get; set; }
+        public virtual DbSet<Modelocar> Modelocar { get; set; }
+        public virtual DbSet<Parceiro> Parceiro { get; set; }
+        public virtual DbSet<Participacao> Participacao { get; set; }
+        public virtual DbSet<Responsavel> Responsavel { get; set; }
+        public virtual DbSet<Veiculo> Veiculo { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
+            modelBuilder
+                .Entity<Participacao>()
+                .HasKey(pf => new { pf.ParceiroId, pf.VeiculoId });
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder
+                .Entity<Responsavel>()
+                .HasKey(pf => new { pf.ParceiroId, pf.DespesaId });
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

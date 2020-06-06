@@ -10,9 +10,9 @@ namespace InvestCarControl.Controllers
 {
     public class ResponsaveisController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IdentyDbContext _context;
 
-        public ResponsaveisController(MyDbContext context)
+        public ResponsaveisController(IdentyDbContext context)
         {
             _context = context;
         }
@@ -25,7 +25,7 @@ namespace InvestCarControl.Controllers
         }
 
         // GET: Responsaveis/Details/5
-        public async Task<IActionResult> Details(int? id1, int? id2 )
+        public async Task<IActionResult> Details(int? id1, string? id2 )
         {
             if (id1 == null || id2 == null)
             {
@@ -71,7 +71,7 @@ namespace InvestCarControl.Controllers
         }
 
         // GET: Responsaveis/Edit/5
-        public async Task<IActionResult> Edit(int? id1, int? id2)
+        public async Task<IActionResult> Edit(int? id1, string? id2)
         {
             if (id1 == null || id2 == null)
             {
@@ -94,7 +94,7 @@ namespace InvestCarControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("DespAntId, ParcAntId")] int despAntId, int parcAntId, [Bind("DespesaId,ParceiroId,Valor")] Responsavel responsavel)
+        public async Task<IActionResult> Edit([Bind("DespAntId, ParcAntId")] int despAntId, string parcAntId, [Bind("DespesaId,ParceiroId,Valor")] Responsavel responsavel)
         {
             if (responsavel == null)
             {

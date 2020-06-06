@@ -10,9 +10,9 @@ namespace InvestCarControl.Controllers
 {
     public class ParticipacoesController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IdentyDbContext _context;
 
-        public ParticipacoesController(MyDbContext context)
+        public ParticipacoesController(IdentyDbContext context)
         {
             _context = context;
         }
@@ -25,7 +25,7 @@ namespace InvestCarControl.Controllers
         }
 
         // GET: Participacoes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null)
             {
@@ -93,7 +93,7 @@ namespace InvestCarControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ParceiroId,VeiculoId,PorcentagemCompra,PorcentagemLucro")] Participacao participacao)
+        public async Task<IActionResult> Edit(string id, [Bind("ParceiroId,VeiculoId,PorcentagemCompra,PorcentagemLucro")] Participacao participacao)
         {
             if (id != participacao.ParceiroId)
             {
@@ -126,7 +126,7 @@ namespace InvestCarControl.Controllers
         }
 
         // GET: Participacoes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null)
             {
@@ -156,7 +156,7 @@ namespace InvestCarControl.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ParticipacaoExists(int id)
+        private bool ParticipacaoExists(string id)
         {
             return _context.Participacao.Any(e => e.ParceiroId == id);
         }

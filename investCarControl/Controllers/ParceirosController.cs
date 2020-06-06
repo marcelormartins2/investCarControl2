@@ -12,10 +12,10 @@ namespace InvestCarControl.Controllers
 {
     public class ParceirosController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IdentyDbContext _context;
         private IHostEnvironment _env;
         
-        public ParceirosController(MyDbContext context, IHostEnvironment env)
+        public ParceirosController(IdentyDbContext context, IHostEnvironment env)
         {
             _context = context;
             _env = env;
@@ -60,7 +60,7 @@ namespace InvestCarControl.Controllers
         }
 
         // GET: Parceiros/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -107,7 +107,7 @@ namespace InvestCarControl.Controllers
         }
 
         // GET: Parceiros/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -127,7 +127,7 @@ namespace InvestCarControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Telefone,Endereço")] Parceiro parceiro)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Nome,Email,Telefone,Endereço")] Parceiro parceiro)
         {
             if (id != parceiro.Id)
             {
@@ -158,7 +158,7 @@ namespace InvestCarControl.Controllers
         }
 
         // GET: Parceiros/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -186,7 +186,7 @@ namespace InvestCarControl.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ParceiroExists(int id)
+        private bool ParceiroExists(string id)
         {
             return _context.Parceiro.Any(e => e.Id == id);
         }

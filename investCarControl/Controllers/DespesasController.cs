@@ -11,9 +11,9 @@ namespace InvestCarControl.Controllers
     [Authorize]
     public class DespesasController : Controller
     {
-        private readonly MyDbContext _context;
+        private readonly IdentyDbContext _context;
 
-        public DespesasController(MyDbContext context)
+        public DespesasController(IdentyDbContext context)
         {
             _context = context;
         }
