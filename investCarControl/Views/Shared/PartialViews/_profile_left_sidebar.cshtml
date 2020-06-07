@@ -1,9 +1,12 @@
 ﻿
 @using Microsoft.AspNetCore.Identity
+@using System.IO
+
 @inject SignInManager<Parceiro> SignInManager
 @inject UserManager<Parceiro> UserManager
 
-@{var avat = this.User.Identity.Name.ToString() + ".jpg?" + DateTime.Now.Ticks;}
+@{  var avat = this.User.Identity.Name.ToString() + ".jpg?" + DateTime.Now.Ticks;
+}
 <!--  .sidebar-panel -->
 <div class="sidebar-panel">
     <h5 class="sidebar-panel-title">Parceiro</h5>

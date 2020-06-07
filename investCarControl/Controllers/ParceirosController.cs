@@ -36,7 +36,9 @@ namespace InvestCarControl.Controllers
                 ViewData["PathAvatar"] = "/img/avatars/default2.png";
             }
             ViewData["NomeUsuario"] = User.Identity.Name;
-            return View(await _context.Parceiro.ToListAsync());
+            var parceiro = await _context.Parceiro
+                .FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
+            return View(parceiro);
         }
 
         public async Task<IActionResult> Avatar() 
