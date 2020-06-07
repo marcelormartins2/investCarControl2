@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace InvestCarControl.Controllers
@@ -28,7 +29,7 @@ namespace InvestCarControl.Controllers
                                  Directory.GetCurrentDirectory(), "wwwroot/img/avatars", this.User.Identity.Name + ".jpg");
             if (System.IO.File.Exists(path))
             {
-                ViewData["PathAvatar"] = "/img/avatars/"+User.Identity.Name +".jpg";
+                ViewData["PathAvatar"] = "/img/avatars/"+User.Identity.Name +".jpg?"+ DateTime.Now.Ticks;
             }
             else
             {

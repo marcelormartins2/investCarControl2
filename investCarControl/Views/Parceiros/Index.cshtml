@@ -5,18 +5,222 @@
     ViewData["Title"] = "Parceiros";
 }
 
-@await Html.PartialAsync("_parceirosInicio")
+<table>
+    <tr>
+        <td>
+            <!-- Start .row -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <!-- col-lg-4 start here -->
+                    <div class="panel panel-default plain">
+                        <!-- Start .panel -->
+                        <div class="panel-heading">
+                            <h4 class="panel-title bb">Parceiro</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row profile">
+                                <!-- Start .row -->
+                                <div class="col-md-4">
+                                    <div class="profile-avatar">
+                                        <p>@ViewBag.NomeUsuario</p>
+                                        <img src=@ViewBag.PathAvatar alt="Avatar" height="128" width="128">
+                                        <p class="mt10">
+                                            <a asp-area="" asp-controller="Parceiros" asp-action="Avatar"><i class="fa fa-picture-o"></i> Editar</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="profile-name">
+                                        <h3>Jonathan Smith</h3>
+                                        <p class="job-title mb0"><i class="fa fa-building"></i> SEO in Neocom Solutions</p>
+                                        <p class="balance">
+                                            Balance: <span>146$</span>
+                                        </p>
+                                        <a href="#" class="btn btn-primary btn-large mr10"> <i class="fa fa-envelope"></i> Send email</a>
+                                        <a href="#" class="btn btn-default btn-alt btn-large"> Send PM</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="contact-info bt">
+                                        <div class="row">
+                                            <!-- Start .row -->
+                                            <div class="col-md-4">
+                                                <dl class="mt20">
+                                                    <dt class="text-muted">Phone</dt>
+                                                    <dd>(367)-045-347</dd>
+                                                    <dt class="text-muted">Mobile</dt>
+                                                    <dd>(368)-234-112</dd>
+                                                    <dt class="text-muted">Fax</dt>
+                                                    <dd>(362)-666-347</dd>
+                                                </dl>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <dl class="mt20">
+                                                    <dt class="text-muted">Email</dt>
+                                                    <dd>jonathansmith@gmail.com</dd>
+                                                    <dt class="text-muted">Skype</dt>
+                                                    <dd>jonatahn_smith</dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                        <!-- End .row -->
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="profile-info bt">
+                                        <h5 class="text-muted">Profile info</h5>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores minus consequuntur corporis optio accusantium perspiciatis veritatis temporibus nostrum, saepe omnis aperiam illum odit, quos, cum eveniet
+                                            possimus illo. Saepe sunt porro culpa repellat dolorem aperiam, quae nihil, maxime ducimus officiis voluptate. Libero obcaecati laboriosam reprehenderit adipisci harum ad, veniam explicabo.
+                                        </p>
+                                    </div>
+                                    <div class="profile-tags">
+                                        <h5 class="text-muted">Tags</h5>
+                                        <form role="form" class="form-horizontal mb15">
+                                            <input type="text" value="CEO, Worker" data-role="tagsinput">
+                                        </form>
+                                    </div>
+                                    <div class="social bt">
+                                        <h5 class="text-muted">Social</h5>
+                                        <dl class="dl-horizontal mb0">
+                                            <dt>
+                                                <span class="text-muted">
+                                                    <i class="fa fa-facebook-square"></i>
+                                                    Facebook:
+                                                </span>
+                                            </dt>
+                                            <dd>
+                                                <a href="#">facebook.com/1231</a>
+                                            </dd>
+                                            <dt>
+                                                <span class="text-muted">
+                                                    <i class="fa fa-twitter"></i>
+                                                    Twitter:
+                                                </span>
+                                            </dt>
+                                            <dd>
+                                                <a href="#">twitter.com/profile/3234.html</a>
+                                            </dd>
+                                            <dt>
+                                                <span class="text-muted">
+                                                    <i class="fa fa-google-plus"></i>
+                                                    Google+:
+                                                </span>
+                                            </dt>
+                                            <dd>
+                                                <a href="#">plus.google.com/jonathansmith</a>
+                                            </dd>
+                                            <dt>
+                                                <span class="text-muted">
+                                                    <i class="fa fa-linkedin"></i>
+                                                    LinkedIn:
+                                                </span>
+                                            </dt>
+                                            <dd>
+                                                <a href="#">linkd.in/123123</a>
+                                            </dd>
+                                            <dt>
+                                                <span class="text-muted">
+                                                    <i class="fa fa-pinterest"></i>
+                                                    Pinterest:
+                                                </span>
+                                            </dt>
+                                            <dd>
+                                                <a href="#">pinterst.com/profile/3234.html</a>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End .row -->
+                        </div>
+                    </div>
+                    <!-- End .panel -->
+                    <div class="panel panel-default plain">
+                        <!-- Start .panel -->
+                        <div class="panel-heading">
+                            <h4 class="panel-title">User stats</h4>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="progressbars-stats list-unstyled">
+                                <li>
+                                    <div class="progressbar-icon">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </div>
+                                    <span class="progressbar-text">Profile complete</span>
+                                    <div class="progress animated-bar flat mt0">
+                                        <div class="progress-bar" role="progressbar" data-transitiongoal="40"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="progressbar-icon">
+                                        <i class="glyphicon glyphicon-comment"></i>
+                                    </div>
+                                    <span class="progressbar-text">Answer to messages</span>
+                                    <div class="progress animated-bar flat mt0">
+                                        <div class="progress-bar progress-bar-primary" role="progressbar" data-transitiongoal="83"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="progressbar-icon">
+                                        <i class="glyphicon glyphicon-hdd"></i>
+                                    </div>
+                                    <span class="progressbar-text">Space taken</span>
+                                    <div class="progress animated-bar flat mt0">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" data-transitiongoal="98"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="progressbar-icon">
+                                        <i class="fa fa-pie-chart"></i>
+                                    </div>
+                                    <span class="progressbar-text">Overall</span>
+                                    <div class="progress animated-bar flat mt0">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" data-transitiongoal="62"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End .panel -->
+                </div>
 
-<div class="col-md-4">
-    <div class="profile-avatar">
-        <p>@ViewBag.NomeUsuario</p>
-        <img src=@ViewBag.PathAvatar alt="Avatar" height="128" width="128">
-        <p class="mt10">
-            <a asp-area="" asp-controller="Parceiros" asp-action="Avatar"><i class="fa fa-picture-o"></i> Editar</a>
-        </p>
-    </div>
-</div>
-
-
-@await Html.PartialAsync("_parceirosFim")
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <!-- col-lg-4 start here -->
+                    <div class="panel panel-default plain">
+                        <!-- Start .panel -->
+                        <div class="panel-heading">
+                            <h4 class="panel-title">User purchase</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div id="user-purchase-chart" style="width: 100%; height:250px;"></div>
+                            <div class="row">
+                                <!-- Start .row -->
+                                <div class="mt20 bt"></div>
+                                <div class="col-lg-6 text-center">
+                                    <!-- col-lg-6 start here -->
+                                    <h5 class="mt20 mb0">Stats by type</h5>
+                                    <div id="morris-donut" style="width: 100%; height:180px;"></div>
+                                </div>
+                                <!-- col-lg-6 end here -->
+                                <div class="col-lg-6 text-center">
+                                    <!-- col-lg-6 start here -->
+                                    <h5 class="mt20 mb0">Purchase distribution</h5>
+                                    <div class="canvas-holder mt15">
+                                        <canvas id="radar-chartjs" height="180"></canvas>
+                                    </div>
+                                </div>
+                                <!-- col-lg-6 end here -->
+                            </div>
+                            <!-- End .row -->
+                        </div>
+                    </div>
+                    <!-- End .panel -->
+                </div>
+                <!-- col-lg-4 end here -->
+            </div>
+            <!-- End .row -->
+        </td>
+    </tr>
+</table>
 

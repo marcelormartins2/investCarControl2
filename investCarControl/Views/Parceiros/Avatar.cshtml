@@ -1,7 +1,5 @@
-﻿@model IEnumerable<InvestCarControl.Models.Parceiro>
-
-@{
-    ViewData["Title"] = "Parceiros";
+﻿@{
+    ViewData["Title"] = "Avatar";
 }
 
 @section heads
@@ -19,8 +17,8 @@
         }
 
         .imageBox {
-            width: 160px;
-            height: 160px;
+            width: 128px;
+            height: 128px;
         }
 
 
@@ -31,22 +29,18 @@
         }
 
         .cropped > img {
-            margin-right: 10px;
+            margin-right: 0px;
         }
 
         #centro {
-            width: 138px;
-            height: 138px;
+            width: 128px;
+            height: 128px;
             position: absolute;
-            top: 6%;
-            left: 6%;
+            top: 0%;
+            left: 0%;
         }
     </style>
 }
-
-
-@await Html.PartialAsync("_parceirosInicio")
-
 
 <base href="/img/avatars/">
 
@@ -76,7 +70,7 @@
     </div>
 </div>
 
-@await Html.PartialAsync("_parceirosFim")
+
 
 @section scripts
 {
@@ -85,12 +79,13 @@
 
     <script type="text/javascript">
         $(window).load(function () {
+            var now = new Date
 
             var options =
             {
                 thumbBox: '.thumbBox',
                 spinner: '.spinner',
-                imgSrc: '@this.User.Identity.Name.ToString()'+'.jpg'
+                imgSrc: '@this.User.Identity.Name.ToString()'+'.jpg?'+now.getTime()
             }
             var cropper = $('.imageBox').cropbox(options);
             $('#file').on('change', function () {
