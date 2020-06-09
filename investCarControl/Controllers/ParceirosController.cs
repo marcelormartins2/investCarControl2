@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace InvestCarControl.Controllers
@@ -35,7 +34,7 @@ namespace InvestCarControl.Controllers
             {
                 ViewData["PathAvatar"] = "/img/avatars/default2.png";
             }
-            ViewData["NomeUsuario"] = User.Identity.Name;
+            //ViewData["NomeUsuario"] = User.Identity.Name;
             var parceiro = await _context.Parceiro
                 .FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
             return View(parceiro);

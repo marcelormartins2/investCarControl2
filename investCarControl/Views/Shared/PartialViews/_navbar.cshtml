@@ -114,10 +114,12 @@
                             <a href="#" class="dropdown-menu-header">Gerenciamento de Usuário</a>
                         </li>
                         <li>
-                            <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Usuário"><i class="l-basic-life-buoy"></i> @UserManager.GetUserName(User)</a>
+                            <a asp-area="" asp-controller="Parceiros" asp-action="Index"><i class="fa fa-edit"></i>@UserManager.GetUserName(User)</a>
+
+                            @*<a asp-area="Identity" asp-page="/Account/Manage/Index" title="Usuário"><i class="l-basic-life-buoy"></i> @UserManager.GetUserName(User)</a>*@
                         </li>
                         <form style="margin: 6px;" asp-area="Identity" asp-page="/Account/Logout" 
-                              asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post">
+                              asp-route-returnUrl="/Identity/Account/Login" method="post">
                             <li>
                                 <button type="submit" class="btn btn-link text-left" style="align-content: flex-start; text-decoration: none; text-decoration-color: darkgray;"><i class="l-basic-signs"></i> Sair</button>
                             </li>
