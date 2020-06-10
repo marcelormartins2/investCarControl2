@@ -28,7 +28,7 @@ namespace InvestCarControl.Controllers
                                  Directory.GetCurrentDirectory(), "wwwroot/img/avatars", this.User.Identity.Name + ".jpg");
             if (System.IO.File.Exists(path))
             {
-                ViewData["PathAvatar"] = "/img/avatars/"+User.Identity.Name +".jpg?"+ DateTime.Now.Ticks;
+                ViewData["PathAvatar"] = "/img/avatars/" + User.Identity.Name + ".jpg?" + DateTime.Now.Ticks;
             }
             else
             {
@@ -37,6 +37,11 @@ namespace InvestCarControl.Controllers
             //ViewData["NomeUsuario"] = User.Identity.Name;
             var parceiro = await _context.Parceiro
                 .FirstOrDefaultAsync(m => m.UserName == User.Identity.Name);
+            return View(parceiro);
+        }
+        public async Task<IActionResult> Lista()
+        {
+            var parceiro = await _context.Parceiro.ToListAsync();
             return View(parceiro);
         }
 
@@ -64,13 +69,14 @@ namespace InvestCarControl.Controllers
         // GET: Parceiros/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null)
+            if (id== null)
             {
                 return NotFound();
             }
 
             var parceiro = await _context.Parceiro
                 .FirstOrDefaultAsync(m => m.Id == id);
+            
             if (parceiro == null)
             {
                 return NotFound();
@@ -80,10 +86,10 @@ namespace InvestCarControl.Controllers
         }
 
         // GET: Parceiros/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
         
 
@@ -111,12 +117,15 @@ namespace InvestCarControl.Controllers
         // GET: Parceiros/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
+            
             if (id == null)
             {
                 return NotFound();
             }
 
-            var parceiro = await _context.Parceiro.FindAsync(id);
+            var parceiro = await _context.Parceiro
+                .FirstOrDefaultAsync(m => m.Id == id);
+
             if (parceiro == null)
             {
                 return NotFound();
@@ -129,7 +138,7 @@ namespace InvestCarControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Nome,Email,Telefone,Endereço")] Parceiro parceiro)
+        public async Task<IActionResult> Edit(string id, Parceiro parceiro)
         {
             if (id != parceiro.Id)
             {
@@ -138,9 +147,15 @@ namespace InvestCarControl.Controllers
 
             if (ModelState.IsValid)
             {
+                var parceiroAtual = await _context.Parceiro
+                    .FirstOrDefaultAsync(m => m.Id == id);
+                parceiroAtual.Nome = parceiro.Nome;
+                parceiroAtual.Telefone = parceiro.Telefone;
+                parceiroAtual.Endereço = parceiro.Endereço;
+
                 try
                 {
-                    _context.Update(parceiro);
+                    _context.Update(parceiroAtual);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -154,7 +169,7 @@ namespace InvestCarControl.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Lista));
             }
             return View(parceiro);
         }
@@ -180,12 +195,41 @@ namespace InvestCarControl.Controllers
         // POST: Parceiros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
+            var participacao = await _context.Participacao
+                .FirstOrDefaultAsync(m => m.ParceiroId == id);
+            var responsavel = await _context.Responsavel
+                .FirstOrDefaultAsync(m => m.ParceiroId == id);
+            if (participacao != null || responsavel != null)
+            {
+                var txtMensagem = "";
+                if (participacao != null)
+                {
+                    if (responsavel != null)
+                    {
+                        txtMensagem = "Não é possível excluir o Parceiro," +
+                             " pois ele possui alguma participação em veículo" +
+                             " e é responsável por alguma despesa.";
+                    }
+                    else
+                    {
+                        txtMensagem = "Não é possível excluir o Parceiro," +
+                             " pois ele possui alguma participação em veículo.";
+                    }
+                } else
+                {
+                    txtMensagem = "Não é possível excluir o Parceiro," +
+                         " pois ele é responsável por alguma despesa.";
+                }
+                return RedirectToAction(nameof(Lista));
+            }
+
             var parceiro = await _context.Parceiro.FindAsync(id);
             _context.Parceiro.Remove(parceiro);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return RedirectToAction(nameof(Lista));
         }
 
         private bool ParceiroExists(string id)

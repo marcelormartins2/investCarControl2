@@ -44,20 +44,21 @@ namespace InvestCarControl.Areas.Identity.Pages.Account
             [Display(Name = "Nome de Usuário")]
             public string UserName { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Um email é requerido.")]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
-            [Required]
-            [StringLength(100, ErrorMessage = "A {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "Uma senha é requerida. ")]
+            [StringLength(100, ErrorMessage = "Uma {0} deve ter pelo menos {2} e no máximo {1} caracteres. ", MinimumLength = 6)]
+            [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%&()*+@_~])(?=.*\d)).+$", ErrorMessage = "mínimo: 6 caracters, 1 maiúsculo, 1 minúsculo e 1 especial")]
             [DataType(DataType.Password)]
             [Display(Name = "Senha")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
             [Display(Name = "Confirmação de Senha")]
-            [Compare("Password", ErrorMessage = "A Confirmação de Senha não está igual a Senha.")]
+            [Compare("Password", ErrorMessage = "Confirmação de Senha não confere.")]
             public string ConfirmPassword { get; set; }
         }
 
