@@ -1,11 +1,17 @@
 ﻿using InvestCarControl.Data;
+using InvestCarControl.Migrations;
 using InvestCarControl.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 
 namespace InvestCarControl.Controllers
@@ -13,19 +19,23 @@ namespace InvestCarControl.Controllers
     public class ParceirosController : Controller
     {
         private readonly IdentyDbContext _context;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<Parceiro> _userManager;
         private IHostEnvironment _env;
         
-        public ParceirosController(IdentyDbContext context, IHostEnvironment env)
+        public ParceirosController(IdentyDbContext context, RoleManager<IdentityRole> roleManager, UserManager<Parceiro> userManager, IHostEnvironment env)
         {
             _context = context;
             _env = env;
+            _roleManager = roleManager;
+            _userManager = userManager;
         }
 
         // GET: Parceiros
         public async Task<IActionResult> Index()
         {
-            var path = Path.Combine(
-                                 Directory.GetCurrentDirectory(), "wwwroot/img/avatars", this.User.Identity.Name + ".jpg");
+            var path = Path.Combine(Directory.GetCurrentDirectory(),
+                "wwwroot/img/avatars", this.User.Identity.Name + ".jpg");
             if (System.IO.File.Exists(path))
             {
                 ViewData["PathAvatar"] = "/img/avatars/" + User.Identity.Name + ".jpg?" + DateTime.Now.Ticks;
@@ -41,8 +51,12 @@ namespace InvestCarControl.Controllers
         }
         public async Task<IActionResult> Lista()
         {
-            var parceiro = await _context.Parceiro.ToListAsync();
-            return View(parceiro);
+            ViewData["Role"] = "User";
+            if (User.IsInRole("Administrator")) {
+                ViewData["Role"] = "Administrator";
+            }
+            var parceiro = _context.Parceiro;
+            return View(await parceiro.ToListAsync());
         }
 
         public async Task<IActionResult> Avatar() 
@@ -98,6 +112,7 @@ namespace InvestCarControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         //public async Task<IActionResult> Create([Bind("Id,Nome,Email,Telefone,Endereço")] Parceiro parceiro)
         public async Task<IActionResult> Create(Parceiro parceiro)
         {
@@ -115,6 +130,7 @@ namespace InvestCarControl.Controllers
         }
 
         // GET: Parceiros/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(string id)
         {
             
@@ -138,6 +154,8 @@ namespace InvestCarControl.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
+
         public async Task<IActionResult> Edit(string id, Parceiro parceiro)
         {
             if (id != parceiro.Id)
@@ -175,6 +193,7 @@ namespace InvestCarControl.Controllers
         }
 
         // GET: Parceiros/Delete/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -195,6 +214,8 @@ namespace InvestCarControl.Controllers
         // POST: Parceiros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
+
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var participacao = await _context.Participacao
@@ -209,20 +230,21 @@ namespace InvestCarControl.Controllers
                     if (responsavel != null)
                     {
                         txtMensagem = "Não é possível excluir o Parceiro," +
-                             " pois ele possui alguma participação em veículo" +
+                             " pois ele tem participação em algum veículo" +
                              " e é responsável por alguma despesa.";
                     }
                     else
                     {
                         txtMensagem = "Não é possível excluir o Parceiro," +
-                             " pois ele possui alguma participação em veículo.";
+                             " pois ele tem participação em algum veículo cadastrado.";
                     }
                 } else
                 {
                     txtMensagem = "Não é possível excluir o Parceiro," +
                          " pois ele é responsável por alguma despesa.";
                 }
-                return RedirectToAction(nameof(Lista));
+                ViewData["Mensagem"] = txtMensagem;
+                return View("Error");
             }
 
             var parceiro = await _context.Parceiro.FindAsync(id);

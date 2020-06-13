@@ -20,8 +20,8 @@ namespace InvestCarControl.Controllers
         // GET: Veiculos
         public async Task<IActionResult> Index()
         {
-            var myDbContext = _context.Veiculo.Include(v => v.Despesa).Include(v => v.ModeloCar);
-            return View(await myDbContext.ToListAsync());
+            var IdentyDbContext = _context.Veiculo.Include(v => v.Despesa).Include(v => v.ModeloCar);
+            return View(await IdentyDbContext.ToListAsync());
         }
 
         // GET: Veiculos/Details/5

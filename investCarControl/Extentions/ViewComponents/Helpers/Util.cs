@@ -6,12 +6,12 @@ namespace InvestCarControl.Extentions.ViewComponents.Helpers
 {
     public static class Util
     {
-        //public static int TotReg(MyDbContext ctx)
+        //public static int TotReg(IdentyDbContext ctx)
         //{
         //    return (from pac in ctx.Paciente.AsNoTracking() select pac).Count();
         //}
 
-        //public static decimal GetNumRegEstado(MyDbContext ctx, string estado)
+        //public static decimal GetNumRegEstado(IdentyDbContext ctx, string estado)
         //{
         //    return ctx.Paciente
         //        .Include(x => x.EstadoPaciente)
